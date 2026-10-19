@@ -1,6 +1,6 @@
 # vite-plugin-static-magic-link
 
-Read `SPEC.md` before any work. It is the decided design for v0.1.0: API, file
+Read `SPEC.md` before any work. It is the decided design for v1.3.1: API, file
 format, hook strategy, bootstrap source, repo layout, tests, and the ordered build
 plan. Tick off build-plan items in `SPEC.md` as they land.
 

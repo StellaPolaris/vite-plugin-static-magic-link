@@ -1,6 +1,6 @@
 # vite-plugin-static-magic-link — build spec
 
-Status: decided 2026-10-12. This file is the source of truth for building v0.1.0.
+Status: decided 2026-10-12. This file is the source of truth for building v1.3.1 (first release; version chosen 2026-10-19).
 A mirror with the flow diagram lives in Claude Docs:
 https://claude.ai/code/artifact/11ee8437-8020-483b-a629-fb3c5a6df5ab
 
@@ -399,7 +399,7 @@ API, and tsup's `dts` step needs one.
 ```json
 {
   "name": "vite-plugin-static-magic-link",
-  "version": "0.1.0",
+  "version": "1.3.1",
   "type": "module",
   "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
   "files": ["dist"],
@@ -436,7 +436,7 @@ Gallery still renders (covers decryption, inlined lazy routes, and the saved key
 - [x] Fixture app runs encrypted under `vite preview`; the e2e test green.
 - [x] `css: true` path (checked by hand 2026-10-19: no .css in dist, styles and background url() apply).
 - [x] README: install, one-line config, options table, output, the one-sentence threat model, limitations.
-- [ ] Reserve the npm name (publish 0.0.0 placeholder or go straight to 0.1.0 when e2e is green).
+- [ ] Reserve the npm name (publish 1.3.1 as the first release).
 
 ## 13. Later (not v1, do not block)
 
