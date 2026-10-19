@@ -427,7 +427,7 @@ Gallery still renders (covers decryption, inlined lazy routes, and the saved key
 ## 12. Build plan (ordered, each step testable)
 
 - [x] Scaffold: root workspace, `packages/plugin` with tsup + vitest, `examples/greeting-site`, `e2e` with Playwright. `npm run build`, `npm test`, `npm run e2e` wired at the root.
-- [ ] `crypto.ts` + `crypto.test.ts`.
+- [x] `crypto.ts` + `crypto.test.ts`.
 - [ ] `html.ts` + `html.test.ts`.
 - [ ] `bootstrap.ts` (template string, exported as a function so the key-less file is reproducible).
 - [ ] `plugin.ts`: `config`, `configResolved`, `generateBundle`, `closeBundle`. `build.test.ts` green.
