@@ -22,7 +22,8 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest run --passWithNoTests",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "prepack": "npm run build && cp ../../README.md ../../LICENSE ."
   },
   "peerDependencies": {
     "vite": ">=8"
