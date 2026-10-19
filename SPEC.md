@@ -39,7 +39,7 @@ code splitting.
 | Binary assets | Not encrypted in v1 | Needs runtime URL rewriting. Vite's `assetsInlineLimit` already pulls small images into the bundle for free |
 | Source maps | Forced off | They contain the plaintext |
 | Dev server | Untouched (`apply: 'build'`) | Local development stays normal |
-| Hook strategy | Single `generateBundle` with `enforce: 'post'` | Runs after Vite's own html plugin, so `index.html` is already in the bundle and can be rewritten in place (same pattern as vite-plugin-singlefile) |
+| Hook strategy | `enforce: 'post'` plugin, `generateBundle` with `order: 'post'` | Runs after all of Vite's build plugins: `index.html` is in the bundle, and Vite's import analysis has already replaced `__VITE_PRELOAD__` in the chunk (found 2026-10-19: without `order: 'post'` the decrypted app throws `__VITE_PRELOAD__ is not defined`) |
 | Package name | `vite-plugin-static-magic-link`, export `staticMagicLink` | Known term + one scoping word. Free on npm as of 2026-10-12 |
 
 ## 3. Public API
@@ -153,13 +153,14 @@ return {
     sourcemap: false,
     cssCodeSplit: false,
     modulePreload: false,
-    rollupOptions: { output: { codeSplitting: false } },
+    rolldownOptions: { output: { codeSplitting: false } },
   },
 }
 ```
 
-- Verified on Vite 8.3.4 (2026-10-12): `build.rollupOptions` is still accepted and
-  `codeSplitting: false` yields exactly one chunk with no warning.
+- Verified on Vite 8.3.4: `codeSplitting: false` yields exactly one chunk with no
+  warning. `build.rollupOptions` is a deprecated alias of `build.rolldownOptions`; the
+  `manualChunks` check looks at both.
 - When `enabled: false`, the plugin returns no hooks at all (plain Vite build).
 - If `userConfig.build?.rollupOptions?.output` is an array, or sets `manualChunks`,
   log a warning (`static-magic-link: manualChunks is ignored, the bundle must be a
@@ -185,7 +186,7 @@ return {
 
 ### 6.3 `generateBundle` — encrypt and rewrite
 
-Runs after Vite's `vite:build-html` plugin because of `enforce: 'post'`, so
+Runs after all of Vite's build plugins because of `order: 'post'`, so
 `bundle['index.html']` exists.
 
 1. **Find the JS chunk.** Exactly one `OutputChunk` with `type === 'chunk'`. If more
@@ -430,8 +431,8 @@ Gallery still renders (covers decryption, inlined lazy routes, and the saved key
 - [x] `crypto.ts` + `crypto.test.ts`.
 - [x] `html.ts` + `html.test.ts`.
 - [x] `bootstrap.ts` (template string, exported as a function so the key-less file is reproducible).
-- [ ] `plugin.ts`: `config`, `configResolved`, `generateBundle`, `closeBundle`. `build.test.ts` green.
-- [ ] Fixture app runs encrypted under `vite preview`; the e2e test green.
+- [x] `plugin.ts`: `config`, `configResolved`, `generateBundle`, `closeBundle`. `build.test.ts` green.
+- [x] Fixture app runs encrypted under `vite preview`; the e2e test green.
 - [ ] `css: true` path (checked by hand; no extra test).
 - [ ] README: install, one-line config, options table, output, the one-sentence threat model, limitations.
 - [ ] Reserve the npm name (publish 0.0.0 placeholder or go straight to 0.1.0 when e2e is green).
