@@ -1,0 +1,10 @@
+body {
+  font: 16px system-ui, sans-serif;
+  margin: 40px auto;
+  max-width: 40em;
+}
+
+.hero {
+  background: url('./assets/small.png') repeat-x bottom / 24px;
+  padding-bottom: 32px;
+}

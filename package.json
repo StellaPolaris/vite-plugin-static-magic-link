@@ -1,0 +1,19 @@
+{
+  "name": "vite-plugin-static-magic-link-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/plugin",
+    "examples/greeting-site",
+    "e2e"
+  ],
+  "scripts": {
+    "build": "npm run build -w vite-plugin-static-magic-link",
+    "test": "npm run build && npm test -w vite-plugin-static-magic-link",
+    "typecheck": "npm run typecheck -w vite-plugin-static-magic-link",
+    "e2e": "npm run build && npm run e2e -w e2e"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
