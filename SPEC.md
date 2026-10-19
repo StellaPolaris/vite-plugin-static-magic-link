@@ -367,7 +367,7 @@ vite-plugin-static-magic-link/
       plugin.ts                the Plugin object (sections 6.x)
       crypto.ts                generateKey, encrypt (node:crypto), FILE_MAGIC, base64url helpers
       bootstrap.ts             buildBootstrap(): string  (section 7 as a template)
-      html.ts                  rewriteHtml(html, { base, bootFile, removeCss: string[] })
+      html.ts                  rewriteHtml(html, { base, bootFile, entryFile, removeCss })
     test/
       crypto.test.ts           round trip; wrong key rejects
       html.test.ts             tag removal + injection on a realistic Vite index.html
@@ -428,7 +428,7 @@ Gallery still renders (covers decryption, inlined lazy routes, and the saved key
 
 - [x] Scaffold: root workspace, `packages/plugin` with tsup + vitest, `examples/greeting-site`, `e2e` with Playwright. `npm run build`, `npm test`, `npm run e2e` wired at the root.
 - [x] `crypto.ts` + `crypto.test.ts`.
-- [ ] `html.ts` + `html.test.ts`.
+- [x] `html.ts` + `html.test.ts`.
 - [ ] `bootstrap.ts` (template string, exported as a function so the key-less file is reproducible).
 - [ ] `plugin.ts`: `config`, `configResolved`, `generateBundle`, `closeBundle`. `build.test.ts` green.
 - [ ] Fixture app runs encrypted under `vite preview`; the e2e test green.
