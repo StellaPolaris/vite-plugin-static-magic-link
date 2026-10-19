@@ -91,7 +91,7 @@ Nothing in app code changes.
 dist/
   index.html              plaintext: Vite's html minus its script/modulepreload tags,
                           plus <script type="module" src="{base}assets/boot-[hash].js">
-  assets/boot-[hash].js   plaintext bootstrap (~1.5 KB)
+  assets/boot-[hash].js   plaintext bootstrap (~2.2 KB, ~1.2 KB gzipped)
   assets/app-[hash].enc   encrypted bundle (its filename is baked into boot.js)
   assets/index-[hash].css plaintext stylesheet (css: false, default)
   assets/*.png …          plaintext assets referenced by URL
@@ -288,7 +288,7 @@ async function main() {
     raw = new Uint8Array(await res.arrayBuffer());
   } catch { fail('fetch-failed'); }
 
-  if (raw.length < 16 || MAGIC.some((b, i) => raw[i] !== b)) fail('bad-file');
+  if (raw.length < 32 || MAGIC.some((b, i) => raw[i] !== b)) fail('bad-file');
   const iv = raw.subarray(4, 16);
   const body = raw.subarray(16);
 
@@ -328,7 +328,7 @@ Notes:
 | Only a saved key, and it no longer decrypts | `subtle.decrypt` rejects | `missing-key` (saved key removed) |
 | Not a secure context | `crypto.subtle` undefined | `no-crypto` |
 | Network / 404 | fetch throws or `!res.ok` | `fetch-failed` |
-| Not an encrypted file | magic prefix mismatch or < 16 bytes | `bad-file` |
+| Not an encrypted file | magic prefix mismatch or < 32 bytes (magic + IV + tag) | `bad-file` |
 | Wrong key | `subtle.decrypt` rejects (`OperationError`) | `wrong-key` |
 
 All render a centered one-line message into `#root` (fallback `document.body`).
@@ -429,7 +429,7 @@ Gallery still renders (covers decryption, inlined lazy routes, and the saved key
 - [x] Scaffold: root workspace, `packages/plugin` with tsup + vitest, `examples/greeting-site`, `e2e` with Playwright. `npm run build`, `npm test`, `npm run e2e` wired at the root.
 - [x] `crypto.ts` + `crypto.test.ts`.
 - [x] `html.ts` + `html.test.ts`.
-- [ ] `bootstrap.ts` (template string, exported as a function so the key-less file is reproducible).
+- [x] `bootstrap.ts` (template string, exported as a function so the key-less file is reproducible).
 - [ ] `plugin.ts`: `config`, `configResolved`, `generateBundle`, `closeBundle`. `build.test.ts` green.
 - [ ] Fixture app runs encrypted under `vite preview`; the e2e test green.
 - [ ] `css: true` path (checked by hand; no extra test).
