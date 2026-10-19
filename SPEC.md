@@ -436,7 +436,7 @@ Gallery still renders (covers decryption, inlined lazy routes, and the saved key
 - [x] Fixture app runs encrypted under `vite preview`; the e2e test green.
 - [x] `css: true` path (checked by hand 2026-10-19: no .css in dist, styles and background url() apply).
 - [x] README: install, one-line config, options table, output, the one-sentence threat model, limitations.
-- [ ] Reserve the npm name (publish 1.3.1 as the first release).
+- [x] Reserve the npm name (published 1.3.1 as the first release, 2026-10-19).
 
 ## 13. Later (not v1, do not block)
 
