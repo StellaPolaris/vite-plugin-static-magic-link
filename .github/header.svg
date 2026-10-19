@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img" aria-labelledby="t d">
   <title id="t">vite-plugin-static-magic-link</title>
-  <desc id="d">A link ending in #key= goes into a browser, which unlocks a photo album, a greeting card and a calendar. The host, the CDN and crawlers only see scrambled bytes.</desc>
+  <desc id="d">With the link, the browser shows your site. Without it, there are only scrambled bytes.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#FFF8EE"/>
@@ -13,7 +13,6 @@
       .line { stroke: #2E2238; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
       .twinkle { animation: twinkle 2.6s ease-in-out infinite; }
       .d1 { animation-delay: .9s; }
-      .d2 { animation-delay: 1.7s; }
       @keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
       @media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
     </style>
@@ -29,121 +28,62 @@
   </g>
 
   <!-- title -->
-  <text x="64" y="86" class="sans ink" font-size="46" font-weight="800" letter-spacing="-0.5">vite-plugin-static-magic-link</text>
-  <text x="66" y="124" class="sans" font-size="23" font-weight="500" fill="#6E5A6B">A static site that only people with the link can open.</text>
+  <text x="640" y="80" class="sans ink" font-size="46" font-weight="800" letter-spacing="-0.5" text-anchor="middle">vite-plugin-static-magic-link</text>
+  <text x="640" y="118" class="sans" font-size="23" font-weight="500" fill="#6E5A6B" text-anchor="middle">A static site that only people with the link can open.</text>
 
-  <!-- magic wand, top right -->
-  <g transform="translate(1150 78)">
-    <line x1="-46" y1="44" x2="10" y2="-12" stroke="#2E2238" stroke-width="9" stroke-linecap="round"/>
-    <line x1="-46" y1="44" x2="-30" y2="28" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
-    <use href="#spark" transform="translate(18 -20) scale(1.6)" fill="#FFC145" stroke="#2E2238" stroke-width="1.6" class="twinkle"/>
-    <use href="#spark" transform="translate(56 -8) scale(.8)" fill="#FF7A59" class="twinkle d1"/>
-    <use href="#spark" transform="translate(40 30) scale(.65)" fill="#2BB3A3" class="twinkle d2"/>
-    <use href="#spark" transform="translate(-16 -36) scale(.6)" fill="#8B6CD9" class="twinkle d1"/>
-  </g>
-
-  <!-- 1. the link -->
+  <!-- with the link: the site -->
   <g>
-    <path d="M86 190 H410 a22 22 0 0 1 22 22 V264 a22 22 0 0 1 -22 22 H130 L100 310 L104 286 H86 a22 22 0 0 1 -22 -22 V212 a22 22 0 0 1 22 -22 Z" fill="#FFFFFF" class="line"/>
-    <g fill="none" stroke="#F2A900" stroke-width="6" stroke-linecap="round">
-      <circle cx="96" cy="238" r="10"/>
-      <path d="M106 238 H128 M121 238 V246 M128 238 V244"/>
-    </g>
-    <text x="140" y="246" class="mono" font-size="22" font-weight="600"><tspan class="ink">album.example/</tspan><tspan fill="#E8573A">#key=…</tspan></text>
-  </g>
-  <text x="248" y="364" class="sans ink" font-size="21" font-weight="700" text-anchor="middle">You share a link</text>
-  <text x="248" y="388" class="sans" font-size="17" fill="#6E5A6B" text-anchor="middle">the #key part never reaches a server</text>
+    <rect x="170" y="160" width="420" height="170" rx="18" fill="#FFFFFF"/>
+    <path d="M188 161.5 H572 a16.5 16.5 0 0 1 16.5 16.5 V194 H171.5 V178 a16.5 16.5 0 0 1 16.5 -16.5 Z" fill="#FFE1D1"/>
+    <line x1="171.5" y1="194" x2="588.5" y2="194" class="line"/>
+    <rect x="170" y="160" width="420" height="170" rx="18" fill="none" class="line"/>
+    <circle cx="194" cy="177" r="5.5" fill="#FF7A59"/>
+    <circle cx="212" cy="177" r="5.5" fill="#FFC145"/>
+    <circle cx="230" cy="177" r="5.5" fill="#2BB3A3"/>
+    <rect x="250" y="167" width="250" height="20" rx="10" fill="#FFFFFF" stroke="#E6CDBF" stroke-width="1.5"/>
+    <text x="264" y="182" class="mono" font-size="14" font-weight="600"><tspan class="ink">your.site/</tspan><tspan fill="#E8573A">#key=…</tspan></text>
 
-  <!-- arrow: link -> browser -->
-  <path d="M442 238 H478" stroke="#FF7A59" stroke-width="6" stroke-linecap="round"/>
-  <path d="M474 226 L492 238 L474 250 Z" fill="#FF7A59" stroke="#FF7A59" stroke-width="3" stroke-linejoin="round"/>
-
-  <!-- 2. the browser -->
-  <g>
-    <rect x="500" y="160" width="330" height="180" rx="18" fill="#FFFFFF" class="line"/>
-    <path d="M518 161.5 H812 a16.5 16.5 0 0 1 16.5 16.5 V194 H501.5 V178 a16.5 16.5 0 0 1 16.5 -16.5 Z" fill="#FFE1D1"/>
-    <line x1="501.5" y1="194" x2="828.5" y2="194" class="line"/>
-    <rect x="500" y="160" width="330" height="180" rx="18" fill="none" class="line"/>
-    <circle cx="524" cy="177" r="5.5" fill="#FF7A59"/>
-    <circle cx="542" cy="177" r="5.5" fill="#FFC145"/>
-    <circle cx="560" cy="177" r="5.5" fill="#2BB3A3"/>
-    <rect x="580" y="168" width="208" height="18" rx="9" fill="#FFFFFF" stroke="#E6CDBF" stroke-width="1.5"/>
-    <text x="592" y="181.5" class="mono" font-size="12" fill="#6E5A6B">album.example/<tspan fill="#E8573A">#key=…</tspan></text>
-
-    <!-- photo album -->
-    <g transform="translate(590 268) rotate(-8)">
-      <rect x="-38" y="-44" width="76" height="88" rx="4" fill="#FFFFFF" stroke="#2E2238" stroke-width="2.5"/>
-      <rect x="-31" y="-37" width="62" height="54" fill="#9ADCF5"/>
-      <circle cx="14" cy="-23" r="8" fill="#FFC145"/>
-      <path d="M-31 17 V-1 Q-13 -16 4 -2 Q18 -12 31 0 V17 Z" fill="#5CC08A"/>
-      <line x1="-18" y1="31" x2="16" y2="31" stroke="#E2D4C8" stroke-width="3" stroke-linecap="round"/>
-    </g>
     <!-- greeting card -->
-    <g transform="translate(667 262) rotate(3)">
-      <rect x="-38" y="-44" width="76" height="88" rx="4" fill="#FFFFFF" stroke="#2E2238" stroke-width="2.5"/>
-      <rect x="-31" y="-37" width="62" height="54" fill="#FFD6E2"/>
-      <path d="M0 8 C-24 -6 -16 -30 0 -19 C16 -30 24 -6 0 8 Z" fill="#FF5A7A"/>
-      <line x1="-18" y1="31" x2="16" y2="31" stroke="#E2D4C8" stroke-width="3" stroke-linecap="round"/>
+    <g transform="translate(380 262) rotate(-4)">
+      <rect x="-80" y="-48" width="160" height="96" rx="8" fill="#FFD6E2" stroke="#2E2238" stroke-width="2.5"/>
+      <path d="M0 26 C-36 4 -24 -34 0 -17 C24 -34 36 4 0 26 Z" fill="#FF5A7A" stroke="#2E2238" stroke-width="2.5" stroke-linejoin="round"/>
     </g>
-    <!-- shared calendar -->
-    <g transform="translate(745 270) rotate(9)">
-      <rect x="-38" y="-44" width="76" height="88" rx="4" fill="#FFFFFF" stroke="#2E2238" stroke-width="2.5"/>
-      <rect x="-31" y="-37" width="62" height="54" fill="#FFF6EA"/>
-      <rect x="-31" y="-37" width="62" height="13" fill="#FF7A59"/>
-      <g fill="#E8D9CB">
-        <rect x="-26" y="-18" width="9" height="8" rx="2"/><rect x="-14" y="-18" width="9" height="8" rx="2"/><rect x="-2" y="-18" width="9" height="8" rx="2"/><rect x="10" y="-18" width="9" height="8" rx="2"/>
-        <rect x="-26" y="-6" width="9" height="8" rx="2"/><rect x="-14" y="-6" width="9" height="8" rx="2"/><rect x="10" y="-6" width="9" height="8" rx="2"/>
-        <rect x="-26" y="6" width="9" height="8" rx="2"/><rect x="-14" y="6" width="9" height="8" rx="2"/><rect x="-2" y="6" width="9" height="8" rx="2"/>
-      </g>
-      <rect x="-2" y="-6" width="9" height="8" rx="2" fill="#2BB3A3"/>
-      <line x1="-18" y1="31" x2="16" y2="31" stroke="#E2D4C8" stroke-width="3" stroke-linecap="round"/>
-    </g>
+    <use href="#spark" transform="translate(272 226) scale(.9)" fill="#FFC145" class="twinkle"/>
+    <use href="#spark" transform="translate(492 300) scale(.75)" fill="#2BB3A3" class="twinkle d1"/>
 
     <!-- unlocked badge -->
-    <g transform="translate(828 162)">
+    <g transform="translate(590 162)">
       <circle r="25" fill="#2BB3A3" stroke="#2E2238" stroke-width="3"/>
       <path d="M-7 -2 V-9 a7 7 0 0 1 13.5 -2.5" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
       <rect x="-11" y="-2" width="22" height="16" rx="3.5" fill="#FFFFFF"/>
       <circle cx="0" cy="5.5" r="2.6" fill="#2BB3A3"/>
     </g>
-    <use href="#spark" transform="translate(486 172) scale(.75)" fill="#FFC145" class="twinkle d2"/>
-    <use href="#spark" transform="translate(846 326) scale(.9)" fill="#FF7A59" class="twinkle"/>
   </g>
-  <text x="665" y="364" class="sans ink" font-size="21" font-weight="700" text-anchor="middle">Their browser unlocks the site</text>
-  <text x="665" y="388" class="sans" font-size="17" fill="#6E5A6B" text-anchor="middle">decrypted on the spot, nothing to install</text>
+  <text x="380" y="374" class="sans ink" font-size="24" font-weight="700" text-anchor="middle">With the link: your site</text>
 
-  <!-- arrow: host -> browser (encrypted file) -->
-  <path d="M906 238 H866" stroke="#2BB3A3" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 11"/>
-  <path d="M866 226 L848 238 L866 250 Z" fill="#2BB3A3" stroke="#2BB3A3" stroke-width="3" stroke-linejoin="round"/>
-
-  <!-- 3. host, CDN and crawlers -->
+  <!-- without the link: scrambled bytes -->
   <g>
-    <path d="M948 248 A30 30 0 0 1 952 188 A44 44 0 0 1 1034 172 A36 36 0 0 1 1100 198 A25 25 0 0 1 1102 248 Z" fill="#FFFFFF" class="line"/>
-    <text x="1026" y="232" class="sans ink" font-size="21" font-weight="700" text-anchor="middle">host · CDN</text>
+    <rect x="690" y="160" width="420" height="170" rx="18" fill="#2E2238"/>
+    <path d="M708 161.5 H1092 a16.5 16.5 0 0 1 16.5 16.5 V194 H691.5 V178 a16.5 16.5 0 0 1 16.5 -16.5 Z" fill="#EDE3DA"/>
+    <line x1="691.5" y1="194" x2="1108.5" y2="194" class="line"/>
+    <rect x="690" y="160" width="420" height="170" rx="18" fill="none" class="line"/>
+    <circle cx="714" cy="177" r="5.5" fill="#C9BBB0"/>
+    <circle cx="732" cy="177" r="5.5" fill="#C9BBB0"/>
+    <circle cx="750" cy="177" r="5.5" fill="#C9BBB0"/>
+    <rect x="770" y="167" width="250" height="20" rx="10" fill="#FFFFFF" stroke="#E6CDBF" stroke-width="1.5"/>
+    <text x="784" y="182" class="mono" font-size="14" font-weight="600" fill="#8A7A86">your.site/</text>
 
-    <!-- crawler robot -->
-    <g transform="translate(1176 214)">
-      <line x1="0" y1="-30" x2="0" y2="-42" class="line"/>
-      <circle cx="0" cy="-45" r="5" fill="#FF7A59" stroke="#2E2238" stroke-width="2.5"/>
-      <rect x="-28" y="-30" width="56" height="44" rx="12" fill="#C9B8F0" class="line"/>
-      <circle cx="-11" cy="-10" r="6" fill="#FFFFFF" stroke="#2E2238" stroke-width="2.5"/>
-      <circle cx="11" cy="-10" r="6" fill="#FFFFFF" stroke="#2E2238" stroke-width="2.5"/>
-      <circle cx="-10" cy="-9" r="2.4" class="ink"/>
-      <circle cx="12" cy="-11" r="2.4" class="ink"/>
-      <path d="M-9 5 Q-4 1 0 5 T9 5" fill="none" class="line" stroke-width="2.5"/>
-      <rect x="-20" y="17" width="40" height="22" rx="7" fill="#C9B8F0" class="line"/>
-    </g>
-    <text x="1214" y="178" class="sans" font-size="26" font-weight="800" fill="#8B6CD9">?</text>
+    <text x="900" y="240" class="mono" font-size="20" font-weight="600" fill="#FFC145" text-anchor="middle">a7 f3 0c 9e 41 b2 7d e8 5c</text>
+    <text x="900" y="270" class="mono" font-size="20" font-weight="600" fill="#FF9B85" text-anchor="middle">02 d9 6a 3f c1 88 0b 7e 13</text>
+    <text x="900" y="300" class="mono" font-size="20" font-weight="600" fill="#C9B8F0" text-anchor="middle">e4 5a 90 2c f7 61 b8 04 dd</text>
 
-    <!-- scrambled bytes -->
-    <rect x="906" y="266" width="316" height="62" rx="14" fill="#2E2238"/>
-    <g transform="translate(931 297)">
-      <path d="M-6 -3 V-8 a6 6 0 0 1 12 0 V-3" fill="none" stroke="#FFC145" stroke-width="3"/>
-      <rect x="-9" y="-4" width="18" height="14" rx="3" fill="#FFC145"/>
+    <!-- locked badge -->
+    <g transform="translate(1110 162)">
+      <circle r="25" fill="#FF7A59" stroke="#2E2238" stroke-width="3"/>
+      <path d="M-7 -2 V-8 a7 7 0 0 1 14 0 V-2" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+      <rect x="-11" y="-2" width="22" height="16" rx="3.5" fill="#FFFFFF"/>
+      <circle cx="0" cy="5.5" r="2.6" fill="#FF7A59"/>
     </g>
-    <text x="954" y="292" class="mono" font-size="17" font-weight="600" fill="#FFC145">a7 f3 0c 9e 41 b2 7d e8</text>
-    <text x="954" y="315" class="mono" font-size="17" font-weight="600" fill="#FF9B85">5c 02 d9 6a 3f c1 88 0b</text>
   </g>
-  <text x="1064" y="364" class="sans ink" font-size="21" font-weight="700" text-anchor="middle">Everyone else sees this</text>
-  <text x="1064" y="388" class="sans" font-size="17" fill="#6E5A6B" text-anchor="middle">host, CDN and crawlers get scrambled bytes</text>
+  <text x="900" y="374" class="sans ink" font-size="24" font-weight="700" text-anchor="middle">Without it: scrambled bytes</text>
 </svg>

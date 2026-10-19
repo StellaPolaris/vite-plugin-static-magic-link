@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/StellaPolaris/vite-plugin-static-magic-link/main/.github/header.svg" alt="vite-plugin-static-magic-link: a link with #key=… unlocks the site in the browser, while the host, the CDN and crawlers only see scrambled bytes" width="100%">
+  <img src="https://raw.githubusercontent.com/StellaPolaris/vite-plugin-static-magic-link/main/.github/header.svg" alt="vite-plugin-static-magic-link: with the link, your site; without it, scrambled bytes" width="100%">
 </p>
 
 <p align="center">
