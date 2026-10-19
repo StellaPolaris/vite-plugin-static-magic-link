@@ -40,6 +40,7 @@ code splitting.
 | Source maps | Forced off | They contain the plaintext |
 | Dev server | Untouched (`apply: 'build'`) | Local development stays normal |
 | Hook strategy | `enforce: 'post'` plugin, `generateBundle` with `order: 'post'` | Runs after all of Vite's build plugins: `index.html` is in the bundle, and Vite's import analysis has already replaced `__VITE_PRELOAD__` in the chunk (found 2026-10-19: without `order: 'post'` the decrypted app throws `__VITE_PRELOAD__ is not defined`) |
+| Consumer docs | README only (plus LICENSE), copied into the package by `prepack`. No AGENTS.md or CLAUDE.md shipped (decided 2026-10-19) | Agents already read `node_modules/<pkg>/README.md` and the `.d.ts` JSDoc. A CLAUDE.md in `packages/plugin/` would also be loaded while developing this repo and mix consumer and developer instructions |
 | Package name | `vite-plugin-static-magic-link`, export `staticMagicLink` | Known term + one scoping word. Free on npm as of 2026-10-12 |
 
 ## 3. Public API
@@ -358,7 +359,7 @@ Overridable copy (`messages` option) is deferred.
 vite-plugin-static-magic-link/
   package.json                 workspace root (npm workspaces)
   SPEC.md                      this file
-  README.md
+  README.md                    the only consumer doc; prepack copies it (and LICENSE) into packages/plugin
   packages/plugin/
     package.json               name: vite-plugin-static-magic-link, type: module
     tsup.config.ts             entry src/index.ts, format esm, dts, target node20
