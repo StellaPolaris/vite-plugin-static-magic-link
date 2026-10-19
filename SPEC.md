@@ -433,7 +433,7 @@ Gallery still renders (covers decryption, inlined lazy routes, and the saved key
 - [x] `bootstrap.ts` (template string, exported as a function so the key-less file is reproducible).
 - [x] `plugin.ts`: `config`, `configResolved`, `generateBundle`, `closeBundle`. `build.test.ts` green.
 - [x] Fixture app runs encrypted under `vite preview`; the e2e test green.
-- [ ] `css: true` path (checked by hand; no extra test).
+- [x] `css: true` path (checked by hand 2026-10-19: no .css in dist, styles and background url() apply).
 - [ ] README: install, one-line config, options table, output, the one-sentence threat model, limitations.
 - [ ] Reserve the npm name (publish 0.0.0 placeholder or go straight to 0.1.0 when e2e is green).
 
